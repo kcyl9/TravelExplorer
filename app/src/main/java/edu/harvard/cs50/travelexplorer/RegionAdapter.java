@@ -27,7 +27,6 @@ public class RegionAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.region_row, parent, false);
-
         return new ViewHolder(view);
     }
 
