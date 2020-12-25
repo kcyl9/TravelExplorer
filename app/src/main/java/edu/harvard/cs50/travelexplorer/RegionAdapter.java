@@ -1,6 +1,7 @@
 package edu.harvard.cs50.travelexplorer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,11 @@ public class RegionAdapter extends RecyclerView.Adapter {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), (CharSequence) regions.get(position),Toast.LENGTH_LONG).show();
+                String current = (String) regions.get(position);
+                Intent intent = new Intent(view.getContext(), CountriesActivity.class);
+                intent.putExtra("region", current);
+
+                view.getContext().startActivity(intent);
             }
         });
     }
