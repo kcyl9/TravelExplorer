@@ -53,7 +53,7 @@ public class RegionAdapter extends RecyclerView.Adapter {
         return regions.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView region;
 
