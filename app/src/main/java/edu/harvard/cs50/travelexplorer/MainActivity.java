@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    List<String> regionsList = Arrays.asList("Africa", "Antartic", "Asia", "Central America", "Middle East", "North America", "Oceania", "South America", "The Caribbean");
+    List<String> regionsList = Arrays.asList("Africa", "Americas", "Asia", "Europe", "Oceania", "Polar");
     List<String> regions = new ArrayList<>();
 
     @Override
