@@ -41,9 +41,21 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder2 countryViewHolder, int position) {
         countryViewHolder.country_name.setText(countries.get(position).getName());
+        if ((countries.get(position).getName()).equals("")) {
+            countryViewHolder.country_name.setText("Unknown");
+        }
         countryViewHolder.country_code.setText(countries.get(position).getCode());
+        if ((countries.get(position).getCode()).equals("")) {
+            countryViewHolder.country_code.setText("N/A");
+        }
         countryViewHolder.country_capital.setText(countries.get(position).getCapital());
+        if ((countries.get(position).getCapital()).equals("Capital: ")) {
+            countryViewHolder.country_capital.setText("Capital: N/A");
+        }
         countryViewHolder.country_population.setText(countries.get(position).getPopulation());
+        if ((countries.get(position).getPopulation()).equals("Population: ")) {
+            countryViewHolder.country_population.setText("Population: N/A");
+        }
 
         //Load image from the internet and set it into ImageView using Glide
         Glide.with(context).load(countries.get(position).getFlag_url()).apply(option).into(countryViewHolder.country_flag);
