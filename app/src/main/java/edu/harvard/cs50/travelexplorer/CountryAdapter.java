@@ -1,7 +1,6 @@
 package edu.harvard.cs50.travelexplorer;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +20,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
     private List<Country> countries;
     public String chosenRegion;
     private Context context;
-    RequestOptions option;
 
     public CountryAdapter(Context context, List<Country> countries, String chosenRegion) {
         this.context = context;
         this.countries = countries;
         this.chosenRegion = chosenRegion;
-
-        option = new RequestOptions().centerCrop().placeholder(R.drawable.ic_launcher_background).error(R.drawable.ic_launcher_background);
     }
 
     @NonNull
@@ -57,8 +53,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
             countryViewHolder.country_population.setText("Population: N/A");
         }
 
-        //Load image from the internet and set it into ImageView using Glide
-        Glide.with(context).load(countries.get(position).getFlag_url()).apply(option).into(countryViewHolder.country_flag);
+        GlideApp.with(context).load(countries.get(position).getFlag_url()).apply(RequestOptions.centerCropTransform()).into(countryViewHolder.country_flag);
     }
 
     @Override
