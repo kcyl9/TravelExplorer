@@ -32,7 +32,7 @@
                 android:id="@+id/country_name" />
 
             <CheckBox
-                android:id="@+id/visited_checkbo"
+                android:id="@+id/visited_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="18dp"
                 android:layout_marginLeft="3dp"
