@@ -40,6 +40,7 @@ public class CountriesActivity extends AppCompatActivity {
         countries = new ArrayList<>();
 
         recyclerView2 = findViewById(R.id.recycler_view2);
+
         loadCountries();
     }
 

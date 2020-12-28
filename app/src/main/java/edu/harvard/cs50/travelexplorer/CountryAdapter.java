@@ -1,7 +1,6 @@
 package edu.harvard.cs50.travelexplorer;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +58,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        Log.d("size", String.valueOf(countries.size()));
         return countries.size();
     }
 
@@ -70,7 +68,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         TextView country_population;
         ImageView country_flag;
 
-        public ViewHolder2(@NonNull View itemView2) {
+        public ViewHolder2(@NonNull final View itemView2) {
             super(itemView2);
             country_name = itemView2.findViewById(R.id.country_name);
             country_code = itemView2.findViewById(R.id.code);
