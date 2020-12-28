@@ -65,9 +65,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
         if(countries.get(position).getCheckVisit()) {
             countryViewHolder.visitButton.setText("Explored!");
+            countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
         }
         else {
             countryViewHolder.visitButton.setText("Never Explored");
+            countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
         }
     }
 
@@ -103,9 +105,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                     checkVisit = !checkVisit;
                     if (checkVisit) {
                         visitButton.setText("Explored!");
+                        visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
                     }
                     else {
                         visitButton.setText("Never Explored");
+                        visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
                     }
                     countries.get(position).setCheckVisit(checkVisit);
                 }
