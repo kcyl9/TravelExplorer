@@ -7,9 +7,6 @@ public class Country {
     private String population;
     private String flag_url;
 
-    public Country() {
-    }
-
     public Country(String name, String code, String capital, String population, String flag_url) {
         this.name = name;
         this.code = code;

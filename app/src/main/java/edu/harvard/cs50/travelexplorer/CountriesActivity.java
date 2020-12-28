@@ -53,7 +53,7 @@ public class CountriesActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         jsonObject = response.getJSONObject(i);
-                        Country country = new Country();
+                        Country country = new Country(null, null, null, null, null);
                         country.setName(jsonObject.getString("name"));
                         country.setCode(jsonObject.getString("alpha3Code"));
                         country.setCapital("Capital: " + jsonObject.getString("capital"));
