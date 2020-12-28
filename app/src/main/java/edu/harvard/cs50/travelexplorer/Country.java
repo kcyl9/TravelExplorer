@@ -6,6 +6,7 @@ public class Country {
     private String capital;
     private String population;
     private String flag_url;
+    private boolean checkVisit;
 
     public Country(String name, String code, String capital, String population, String flag_url) {
         this.name = name;
@@ -13,6 +14,7 @@ public class Country {
         this.capital = capital;
         this.population = population;
         this.flag_url = flag_url;
+        this.checkVisit = checkVisit;
     }
 
     public String getName() {
@@ -35,6 +37,10 @@ public class Country {
         return flag_url;
     }
 
+    public boolean getCheckVisit() {
+        return checkVisit;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -53,5 +59,9 @@ public class Country {
 
     public void setFlag_url(String flag_url) {
         this.flag_url = flag_url;
+    }
+
+    public void setCheckVisit(boolean checkVisit) {
+        this.checkVisit = checkVisit;
     }
 }
