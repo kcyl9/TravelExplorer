@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
         GlideApp.with(context).load(countries.get(position).getFlag_url()).apply(RequestOptions.centerCropTransform()).into(countryViewHolder.country_flag);
 
-        if (countryViewHolder.visited.contains(countryViewHolder.name)) {
+        if (MainActivity.visited.contains(countryViewHolder.name)) {
             countryViewHolder.checkVisit = true;
         }
         else {
@@ -74,10 +75,12 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         if(countryViewHolder.checkVisit) {
             countryViewHolder.visitButton.setText("Explored!");
             countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
+            Log.d("debug", "1");
         }
         else {
             countryViewHolder.visitButton.setText("Never Explored");
             countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
+            Log.d("debug", "3");
         }
     }
 
@@ -96,7 +99,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         String name;
         Button visitButton;
         boolean checkVisit;
-        List<String> visited = new ArrayList<>();
 
         public ViewHolder2(@NonNull View itemView2) {
             super(itemView2);
@@ -115,13 +117,16 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                     if (checkVisit) {
                         visitButton.setText("Explored!");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
-                        visited.add(name);
+                        MainActivity.visited.add(name);
+                        Log.d("debug", "2");
                     }
                     else {
                         visitButton.setText("Never Explored");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
-                        visited.remove(name);
+                        MainActivity.visited.remove(name);
+                        Log.d("debug", "4");
                     }
+                    Log.d("debug", String.valueOf(MainActivity.visited));
                 }
             });
 

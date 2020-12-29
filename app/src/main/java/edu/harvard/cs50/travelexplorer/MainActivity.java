@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager linearLayoutManager;
     List<String> regionsList = Arrays.asList("Africa", "Americas", "Asia", "Europe", "Oceania", "Polar");
     List<String> regions = new ArrayList<>();
+    public static ArrayList<String> visited = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
