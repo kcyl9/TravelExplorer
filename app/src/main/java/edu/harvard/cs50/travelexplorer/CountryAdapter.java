@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder2> {
@@ -39,6 +40,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         return new ViewHolder2(view2);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull ViewHolder2 countryViewHolder, int position) {
         countryViewHolder.position = position;
@@ -63,7 +65,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
 
         GlideApp.with(context).load(countries.get(position).getFlag_url()).apply(RequestOptions.centerCropTransform()).into(countryViewHolder.country_flag);
 
-        if(countries.get(position).getCheckVisit()) {
+        if (countryViewHolder.visited.contains(countryViewHolder.name)) {
+            countryViewHolder.checkVisit = true;
+        }
+        else {
+            countryViewHolder.checkVisit = false;
+        }
+        if(countryViewHolder.checkVisit) {
             countryViewHolder.visitButton.setText("Explored!");
             countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
         }
@@ -88,6 +96,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         String name;
         Button visitButton;
         boolean checkVisit;
+        List<String> visited = new ArrayList<>();
 
         public ViewHolder2(@NonNull View itemView2) {
             super(itemView2);
@@ -106,12 +115,13 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                     if (checkVisit) {
                         visitButton.setText("Explored!");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
+                        visited.add(name);
                     }
                     else {
                         visitButton.setText("Never Explored");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
+                        visited.remove(name);
                     }
-                    countries.get(position).setCheckVisit(checkVisit);
                 }
             });
 
