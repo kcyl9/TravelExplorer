@@ -38,8 +38,11 @@ public class RegionAdapter extends RecyclerView.Adapter {
         ViewHolder regionViewHolder = (ViewHolder) holder;
         regionViewHolder.region.setText((CharSequence) regions.get(position));
 
-        fraction = MainActivity.countVisited.get(regions.get(position)) + "/" + MainActivity.total.get(regions.get(position));
-        Log.d("debug", fraction);
+        fraction = MainActivity.countVisited.get(regions.get(position)) + "/" + MainActivity.total.get(regions.get(position)) + "  -  ";
+        regionViewHolder.fraction.setText(fraction);
+
+        percent = (Math.round((float)MainActivity.countVisited.get(regions.get(position)) * 100.0 / (float)MainActivity.total.get(regions.get(position)))) + "%";
+        regionViewHolder.percent.setText(percent);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

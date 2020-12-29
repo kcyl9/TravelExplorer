@@ -80,12 +80,6 @@ public class CountriesActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
-
     private void setupRecyclerView(List<Country> countries) {
         linearLayoutManager2 = new LinearLayoutManager(getApplicationContext());
         recyclerView2.setLayoutManager(linearLayoutManager2);

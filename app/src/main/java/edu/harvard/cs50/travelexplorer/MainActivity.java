@@ -47,4 +47,11 @@ public class MainActivity extends AppCompatActivity {
         total.put("Oceania", 27);
         total.put("Polar", 1);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        RegionAdapter regionAdapter = new RegionAdapter((ArrayList<String>) regions, MainActivity.this);
+        recyclerView.setAdapter(regionAdapter);
+    }
 }
