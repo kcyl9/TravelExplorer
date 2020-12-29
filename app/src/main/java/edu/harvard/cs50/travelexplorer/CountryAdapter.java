@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHolder2> {
@@ -75,12 +75,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
         if(countryViewHolder.checkVisit) {
             countryViewHolder.visitButton.setText("Explored!");
             countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
-            Log.d("debug", "1");
         }
         else {
             countryViewHolder.visitButton.setText("Never Explored");
             countryViewHolder.visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
-            Log.d("debug", "3");
         }
     }
 
@@ -114,19 +112,20 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     checkVisit = !checkVisit;
+                    int count = MainActivity.countVisited.get(chosenRegion);
                     if (checkVisit) {
                         visitButton.setText("Explored!");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(0xFF66FF66));
+
                         MainActivity.visited.add(name);
-                        Log.d("debug", "2");
+                        MainActivity.countVisited.put(chosenRegion, count += 1);
                     }
                     else {
                         visitButton.setText("Never Explored");
                         visitButton.setBackgroundTintList(ColorStateList.valueOf(Color.LTGRAY));
                         MainActivity.visited.remove(name);
-                        Log.d("debug", "4");
+                        MainActivity.countVisited.put(chosenRegion, count -= 1);
                     }
-                    Log.d("debug", String.valueOf(MainActivity.visited));
                 }
             });
 

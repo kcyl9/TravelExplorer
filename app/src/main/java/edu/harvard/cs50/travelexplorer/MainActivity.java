@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> regionsList = Arrays.asList("Africa", "Americas", "Asia", "Europe", "Oceania", "Polar");
     List<String> regions = new ArrayList<>();
     public static ArrayList<String> visited = new ArrayList<>();
+    public static HashMap<String, Integer> countVisited = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
         RegionAdapter regionAdapter = new RegionAdapter((ArrayList<String>) regions, MainActivity.this);
         recyclerView.setAdapter(regionAdapter);
+
+        if (countVisited.isEmpty()) {
+            for (int i = 0; i < regions.size(); i++) {
+                countVisited.put(regions.get(i), 0);
+            }
+        }
     }
 }
