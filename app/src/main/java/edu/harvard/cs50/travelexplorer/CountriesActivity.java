@@ -1,5 +1,6 @@
 package edu.harvard.cs50.travelexplorer;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -77,6 +78,12 @@ public class CountriesActivity extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(CountriesActivity.this);
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     private void setupRecyclerView(List<Country> countries) {

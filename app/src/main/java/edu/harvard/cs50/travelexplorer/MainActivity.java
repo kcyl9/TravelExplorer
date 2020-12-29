@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> regions = new ArrayList<>();
     public static ArrayList<String> visited = new ArrayList<>();
     public static HashMap<String, Integer> countVisited = new HashMap<>();
+    public static HashMap<String, Integer> total = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +40,11 @@ public class MainActivity extends AppCompatActivity {
                 countVisited.put(regions.get(i), 0);
             }
         }
+        total.put("Africa", 60);
+        total.put("Americas", 57);
+        total.put("Asia", 50);
+        total.put("Europe", 53);
+        total.put("Oceania", 27);
+        total.put("Polar", 1);
     }
 }

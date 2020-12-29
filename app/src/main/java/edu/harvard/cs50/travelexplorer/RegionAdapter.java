@@ -2,17 +2,17 @@ package edu.harvard.cs50.travelexplorer;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class RegionAdapter extends RecyclerView.Adapter {
 
@@ -33,16 +33,20 @@ public class RegionAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-
+        String fraction;
+        String percent;
         ViewHolder regionViewHolder = (ViewHolder) holder;
         regionViewHolder.region.setText((CharSequence) regions.get(position));
+
+        fraction = MainActivity.countVisited.get(regions.get(position)) + "/" + MainActivity.total.get(regions.get(position));
+        Log.d("debug", fraction);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String current = (String) regions.get(position);
                 Intent intent = new Intent(view.getContext(), CountriesActivity.class);
                 intent.putExtra("region", current);
-
                 view.getContext().startActivity(intent);
             }
         });
@@ -54,12 +58,15 @@ public class RegionAdapter extends RecyclerView.Adapter {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView region;
+        TextView fraction;
+        TextView percent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             region = itemView.findViewById(R.id.region_row_text_view);
+            fraction = itemView.findViewById(R.id.fraction);
+            percent = itemView.findViewById(R.id.percent);
         }
     }
 }
