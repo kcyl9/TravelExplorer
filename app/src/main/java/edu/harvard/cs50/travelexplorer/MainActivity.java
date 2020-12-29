@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        TextView totalFractionTextView = findViewById(R.id.total_fraction);
+        TextView totalPercentTextView = findViewById(R.id.total_percent);
+
+        String totalFraction = visited.size() + "/248  -  ";
+        totalFractionTextView.setText(totalFraction);
+
+        String totalPercent = (Math.round((float)MainActivity.visited.size() * 100.0 / 248.0)) + "%";
+        totalPercentTextView.setText(totalPercent);
+
         RegionAdapter regionAdapter = new RegionAdapter((ArrayList<String>) regions, MainActivity.this);
         recyclerView.setAdapter(regionAdapter);
 
@@ -51,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        TextView totalFractionTextView = findViewById(R.id.total_fraction);
+        TextView totalPercentTextView = findViewById(R.id.total_percent);
+
+        String totalFraction = visited.size() + "/248  -  ";
+        totalFractionTextView.setText(totalFraction);
+
+        String totalPercent = (Math.round((float)MainActivity.visited.size() * 100.0 / 248.0)) + "%";
+        totalPercentTextView.setText(totalPercent);
         RegionAdapter regionAdapter = new RegionAdapter((ArrayList<String>) regions, MainActivity.this);
         recyclerView.setAdapter(regionAdapter);
     }
