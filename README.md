@@ -3,7 +3,7 @@ TravelExplorer is an Android app that records the countries that the user has tr
 This app is my final project for CS50x and was written using Java on Android Studio.
 
 ## Preview
-
+[![CS50x_FinalProject](https://img.youtube.com/vi/WWhl4dQUMrM/hqdefault.jpg)](https://youtu.be/WWhl4dQUMrM)
 
 ## Features and Implementation
 - Imports REST Countries API using Android Volley to create a list of regions and countries
